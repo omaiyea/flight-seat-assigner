@@ -2,47 +2,24 @@
 
 using namespace std;
 
-void welcomeMessage();
-int getOptions();
-
-//global vars for menu 
-int menuSize = 3;
-string menuOptions[3] = {"Assign seats", "Change seats", "View seats"};
+void welcomeMessage(string *menu, int size);
 
 int main()
 {
-    int option;
+    int menuSize = 2;
+    string menuOptions[2] = {"Assign seats", "Change seats"};
 
-    welcomeMessage();
-    option = getOptions();
+    welcomeMessage(menuOptions, menuSize);
 
     return 0;
 }
 
-//display welcome message and options to user
-void welcomeMessage()
+void welcomeMessage(string *menu, int size)
 {
     cout << "\n\n\t\tSEAT ASSIGNMENT";
     cout << "\n\n\nMenu Options:\n";
-    for(int i = 0; i < menuSize; i++){
-        cout << i+1 << ". " << menuOptions[i] << "\n";
+    for(int i = 0; i < size; i++){
+        cout << i+1 << ". " << menu[i] << "\n";
     }
-    cout << "\n";
-}
-
-//get users selection for which action to do
-int getOption(){
-    int option;
-    
-    cout << "\nPlease choose an option by entering its number: ";
-    cin >> option;
-
-    //validation, need to verify is number too
-    while(option > menuSize || option < 0) 
-    {
-        cout << "\nPlease choose a valid option: ";
-        cin >> option;
-    };
-
-    return option;
+    cout << "\n\nPlease choose an option: ";
 }
